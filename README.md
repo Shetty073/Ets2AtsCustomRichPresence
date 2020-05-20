@@ -31,7 +31,7 @@ First goto [releases page](https://github.com/Shetty073/Ets2AtsCustomRichPresenc
 6. Now start the game and play
 7. Close the app by clicking on `Stop` button in the app window once you finish playing the game
 
-### FAQ
+### FAQs
 
 **Q.1 Is it necessary to restart this app when switching between ETS 2 and ATS**  
 -> Yes or else the game name will not be updated but the telemetry info will still be updated and will show data from your newly opened game. But it is recomended to restart the app between changing games.  
@@ -57,7 +57,7 @@ First goto [releases page](https://github.com/Shetty073/Ets2AtsCustomRichPresenc
 **Q.8 In which format do I file bug reports and feature-requests in issues?**  
 -> Kindly refer to the issue_templates for [bug reports](https://github.com/Shetty073/Ets2AtsCustomRichPresence/blob/master/.github/ISSUE_TEMPLATE/bug_report.md) and [feature-requests](https://github.com/Shetty073/Ets2AtsCustomRichPresence/blob/master/.github/ISSUE_TEMPLATE/feature_request.md)
 
-### Please follow the above steps and read the above FAQ's before filing a bug report
+### Please follow the above steps and read the above FAQs before filing a bug report
 
 ## For developers only
 
