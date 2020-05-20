@@ -54,6 +54,9 @@ First goto [releases page]() and download the latest release
 **Q.7 Where can I find help regarding this app?**  
 -> You can always ask for help in the [issues section](https://github.com/Shetty073/Ets2AtsCustomRichPresence/issues) of the this project.  
 
+**Q.8 In which format do I file bug reports and feature-requests in issues?**  
+-> Kindly refer to the issue_templates for [bug reports](https://github.com/Shetty073/Ets2AtsCustomRichPresence/blob/master/.github/ISSUE_TEMPLATE/bug_report.md) and [feature-requests](https://github.com/Shetty073/Ets2AtsCustomRichPresence/blob/master/.github/ISSUE_TEMPLATE/feature_request.md)
+
 ## For developers only
 
 ### Dependencies
