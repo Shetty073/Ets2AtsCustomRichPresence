@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ets2AtsCustomRichPresence"
         mc:Ignorable="d"
-        Title="Ets2/Ats Custom Rich Presence" Height="300" Width="419" ResizeMode="CanMinimize" Closing="Window_Closing">
+        Title="Ets2/Ats Custom Rich Presence" Height="300" Width="672" ResizeMode="CanMinimize" Closing="Window_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -17,5 +17,24 @@
         <TextBlock x:Name="textBlockTwo" HorizontalAlignment="Left" Margin="60,96,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Arial" Width="333"/>
         <RadioButton x:Name="etsBtn" Content="ETS 2" HorizontalAlignment="Left" Margin="46,28,0,0" VerticalAlignment="Top" IsChecked="True" FontWeight="Bold" GroupName="GameSelect"/>
         <RadioButton x:Name="atsBtn" Content="ATS" HorizontalAlignment="Left" Margin="109,28,0,0" VerticalAlignment="Top" FontWeight="Bold" GroupName="GameSelect"/>
+        <Separator HorizontalAlignment="Left" Margin="292,119,0,0" Width="232" RenderTransformOrigin="0.5,0.5" Height="18" VerticalAlignment="Top">
+            <Separator.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Separator.RenderTransform>
+        </Separator>
+        <CheckBox x:Name="job" Content="Current Job" HorizontalAlignment="Left" Margin="432,59,0,0" VerticalAlignment="Top" Checked="CurrentJob_Checked" IsChecked="True"/>
+        <CheckBox x:Name="truckModel" Content="Current Truck Model" HorizontalAlignment="Left" Margin="432,79,0,0" VerticalAlignment="Top" IsChecked="True" Checked="CurrentTruckModel_Checked"/>
+        <CheckBox x:Name="speed" Content="Current Speed" HorizontalAlignment="Left" Margin="432,98,0,0" VerticalAlignment="Top" IsChecked="True" Checked="Speed_Checked"/>
+        <CheckBox x:Name="rpm" Content="Current RPM" HorizontalAlignment="Left" Margin="432,118,0,0" VerticalAlignment="Top" IsChecked="True" Checked="Rpm_Checked"/>
+        <CheckBox x:Name="gearPos" Content="Gear Position" HorizontalAlignment="Left" Margin="432,138,0,0" VerticalAlignment="Top" Checked="GearPosition_Checked" IsChecked="True"/>
+        <CheckBox x:Name="fuelPer" Content="Fuel Left %" HorizontalAlignment="Left" Margin="432,158,0,0" VerticalAlignment="Top" IsChecked="True" Checked="FuelPercentage__Checked"/>
+        <Label Content="Select what all info to show" HorizontalAlignment="Left" Margin="427,28,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="jobModel" Content="Only Current Job and Truck Model" Margin="432,203,0,0" VerticalAlignment="Top" Checked="OnlyCurrJobTruckMo_Checked" HorizontalAlignment="Left" Width="200"/>
+        <CheckBox x:Name="jobSpeed" Content="Only Current Job, Truck &amp; Speed" Margin="432,223,0,0" VerticalAlignment="Top" Checked="OnlyCurrJobTruckSpeed_Checked" HorizontalAlignment="Left" Width="200"/>
     </Grid>
 </Window>

@@ -18,7 +18,7 @@ namespace Ets2AtsCustomRichPresence
             client.Initialize();
         }
 
-        public void PresenceUpdate(string details, string state) 
+        public void PresenceUpdate(string details, string state)
         {
             client.SetPresence(new RichPresence()
             {

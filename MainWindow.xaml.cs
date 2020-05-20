@@ -62,5 +62,156 @@ namespace Ets2AtsCustomRichPresence
             Environment.Exit(Environment.ExitCode);
         }
 
+        private void CurrentJob_Checked(object sender, RoutedEventArgs e)
+        {
+            if (jobModel != null && jobModel.IsChecked == true)
+            {
+                jobModel.IsChecked = false;
+            }
+            if (jobSpeed != null && jobSpeed.IsChecked == true)
+            {
+                jobSpeed.IsChecked = false;
+            }
+            
+        }
+
+        private void CurrentTruckModel_Checked(object sender, RoutedEventArgs e)
+        {
+            if (jobModel != null && jobModel.IsChecked == true)
+            {
+                jobModel.IsChecked = false;
+            }
+            if (jobSpeed != null && jobSpeed.IsChecked == true)
+            {
+                jobSpeed.IsChecked = false;
+            }
+        }
+
+        private void Speed_Checked(object sender, RoutedEventArgs e)
+        {
+            if (jobModel != null && jobModel.IsChecked == true)
+            {
+                jobModel.IsChecked = false;
+            }
+            if (jobSpeed != null && jobSpeed.IsChecked == true)
+            {
+                jobSpeed.IsChecked = false;
+            }
+        }
+
+        private void Rpm_Checked(object sender, RoutedEventArgs e)
+        {
+            if (jobModel != null && jobModel.IsChecked == true)
+            {
+                jobModel.IsChecked = false;
+            }
+            if (jobSpeed != null && jobSpeed.IsChecked == true)
+            {
+                jobSpeed.IsChecked = false;
+            }
+        }
+
+        private void GearPosition_Checked(object sender, RoutedEventArgs e)
+        {
+            if (jobModel != null && jobModel.IsChecked == true)
+            {
+                jobModel.IsChecked = false;
+            }
+            if (jobSpeed != null && jobSpeed.IsChecked == true)
+            {
+                jobSpeed.IsChecked = false;
+            }
+        }
+
+        private void FuelPercentage__Checked(object sender, RoutedEventArgs e)
+        {
+            if (jobModel != null && jobModel.IsChecked == true)
+            {
+                jobModel.IsChecked = false;
+            }
+            if (jobSpeed != null && jobSpeed.IsChecked == true)
+            {
+                jobSpeed.IsChecked = false;
+            }
+
+        }
+
+        private void OnlyCurrJobTruckMo_Checked(object sender, RoutedEventArgs e)
+        {
+            if (jobSpeed != null && jobSpeed.IsChecked == true)
+            {
+                jobSpeed.IsChecked = false;
+            }
+
+
+            if (job != null && job.IsChecked == true)
+            {
+                job.IsChecked = false;
+            }
+
+            if (truckModel != null && truckModel.IsChecked == true)
+            {
+                truckModel.IsChecked = false;
+            }
+
+            if (speed != null && speed.IsChecked == true)
+            {
+                speed.IsChecked = false;
+            }
+
+            if (rpm != null && rpm.IsChecked == true)
+            {
+                rpm.IsChecked = false;
+            }
+
+            if (gearPos != null && gearPos.IsChecked == true)
+            {
+                gearPos.IsChecked = false;
+            }
+
+            if (fuelPer != null && fuelPer.IsChecked == true)
+            {
+                fuelPer.IsChecked = false;
+            }
+        }
+
+        private void OnlyCurrJobTruckSpeed_Checked(object sender, RoutedEventArgs e)
+        {
+            if (jobModel != null && jobModel.IsChecked == true)
+            {
+                jobModel.IsChecked = false;
+            }
+
+
+            if (job != null && job.IsChecked == true)
+            {
+                job.IsChecked = false;
+            }
+
+            if (truckModel != null && truckModel.IsChecked == true)
+            {
+                truckModel.IsChecked = false;
+            }
+
+            if (speed != null && speed.IsChecked == true)
+            {
+                speed.IsChecked = false;
+            }
+
+            if (rpm != null && rpm.IsChecked == true)
+            {
+                rpm.IsChecked = false;
+            }
+
+            if (gearPos != null && gearPos.IsChecked == true)
+            {
+                gearPos.IsChecked = false;
+            }
+
+            if (fuelPer != null && fuelPer.IsChecked == true)
+            {
+                fuelPer.IsChecked = false;
+            }
+        }
     }
 }

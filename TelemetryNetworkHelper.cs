@@ -6,6 +6,8 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using System.Threading;
+using System.Windows.Documents;
+using System.Collections.Generic;
 
 namespace Ets2AtsCustomRichPresence
 {
@@ -37,7 +39,9 @@ namespace Ets2AtsCustomRichPresence
                 Debug.WriteLine(e.Message);
                 ((MainWindow)Application.Current.MainWindow).textBlock.Text = "Telemetry server is not running!\nPlease run it before hitting the 'Start' button.";
                 ((MainWindow)Application.Current.MainWindow).processIndicator.Fill = new SolidColorBrush(Colors.Red);
-                ((MainWindow)Application.Current.MainWindow).textBlockTwo.Text = "Stopped";
+                ((MainWindow)Application.Current.MainWindow).textBlockTwo.Text = "Error! Telemetry server not running";
+                Thread.Sleep(5000);
+                Environment.Exit(Environment.ExitCode);
             }
         }
 
@@ -109,7 +113,7 @@ namespace Ets2AtsCustomRichPresence
 
                             string details, state, engine;
 
-                            engine = (bool)jsonData["truck"]["engineOn"] ? "On" : "Off";
+                            engine = (bool)jsonData["truck"]["engineOn"] ? "" : "Engine: Off";
 
                             int speed = (int)jsonData["truck"]["speed"];
                             string speedUnit = isEtsBtnChecked ? "Km/h" : "Mph";
@@ -144,19 +148,116 @@ namespace Ets2AtsCustomRichPresence
                             destinationCity = jsonData["job"]["destinationCity"].ToString();
                             destinationCompany = jsonData["job"]["destinationCompany"].ToString();
 
-                            if (sourceCity.Length > 1)
+                            string jobData = $"{sourceCompany}, {sourceCity} to {destinationCompany}, {destinationCity}";
+
+                            string truckData = $"{jsonData["truck"]["make"]} {jsonData["truck"]["model"]} {engine} ";
+
+                            string speedData = $" {speed} {speedUnit} ";
+
+                            string rpmData = $" {rpm} RPM ";
+
+                            string gearData = $" Gear: {gear} ";
+
+                            string fuelData = $" Fuel: {fuelPercent}% ";
+
+                            var mWin = ((MainWindow)Application.Current.MainWindow);
+
+                            if ((mWin.job.IsChecked == true) && (mWin.truckModel.IsChecked == true) && (mWin.speed.IsChecked == true) && (mWin.rpm.IsChecked == true) && (mWin.gearPos.IsChecked == true) && (mWin.fuelPer.IsChecked == true))
                             {
-                                state = altInfoFlag ? $"{speed} {speedUnit} {rpm} RPM Gear: {gear} Fuel: {fuelPercent}%" : $"{sourceCompany}, {sourceCity} to {destinationCompany}, {destinationCity}";
-                                altInfoFlag = !altInfoFlag;
+                                details = $"{truckData}";
+
+                                if (sourceCity.Length > 1)
+                                {
+                                    state = altInfoFlag ? $"{speedData}{rpmData}{gearData}{fuelData}" : $"{jobData}";
+                                    altInfoFlag = !altInfoFlag;
+                                }
+                                else
+                                {
+                                    state = $"{speedData}{rpmData}{gearData}{fuelData}";
+                                }
+                            }
+                            else if (mWin.jobModel.IsChecked == true)
+                            {
+                                details = $"{jobData}";
+                                state = $"{truckData}";
+                            }
+                            else if (mWin.jobSpeed.IsChecked == true)
+                            {
+                                details = $"{jobData}";
+                                state = $"{truckData}{speedData}";
                             }
                             else
                             {
-                                state = $"{speed} {speedUnit} {rpm} RPM Gear: {gear} Fuel: {fuelPercent}%";
-                                altInfoFlag = !altInfoFlag;
+                                List<string> infoToShow = new List<string>();
+
+                                if (mWin.job.IsChecked == true)
+                                {
+                                    infoToShow.Add(jobData);
+                                }
+                                if (mWin.truckModel.IsChecked == true)
+                                {
+                                    infoToShow.Add(truckData);
+                                }
+                                if (mWin.speed.IsChecked == true)
+                                {
+                                    infoToShow.Add(speedData);
+                                }
+                                if (mWin.rpm.IsChecked == true)
+                                {
+                                    infoToShow.Add(rpmData);
+                                }
+                                if (mWin.gearPos.IsChecked == true)
+                                {
+                                    infoToShow.Add(gearData);
+                                }
+                                if (mWin.fuelPer.IsChecked == true)
+                                {
+                                    infoToShow.Add(fuelData);
+                                }
+
+                                string detailsData = "";
+                                string stateData = "";
+
+                                int count = 0;
+
+                                if (infoToShow.Contains(jobData)) 
+                                {
+                                    infoToShow.Remove(jobData);
+                                }
+
+                                infoToShow.ForEach((string item) => {
+
+                                    if (count < 3) {
+
+
+                                        detailsData += item;
+                                    }
+                                    else
+                                    {
+                                        stateData += item;
+                                    }
+
+                                    count++;
+                                });
+
+
+                                if (sourceCity.Length > 1 && (mWin.job.IsChecked == true))
+                                {
+                                    state = altInfoFlag ? stateData : $"{jobData}";
+                                    altInfoFlag = !altInfoFlag;
+                                }
+                                else if ((sourceCity.Length < 1) && (mWin.job.IsChecked == true))
+                                {
+                                    state = $"Freeroaming: No job taken";
+                                }
+                                else
+                                {
+                                    state = stateData;
+                                }
+
+                                details = detailsData;
                             }
 
-                            Debug.WriteLine(sourceCity.Length);
-                            details = $"Driving: {jsonData["truck"]["make"]} {jsonData["truck"]["model"]} Engine: {engine}";
 
                             discordPresenceHelper.PresenceUpdate(details: details, state: state);
 
@@ -194,9 +295,9 @@ namespace Ets2AtsCustomRichPresence
             catch (Exception e)
             {
                 Debug.WriteLine(e.Message);
-                ((MainWindow)Application.Current.MainWindow).textBlock.Text = "Telemetry server is not running!\nPlease run it before hitting the 'Start' button.";
+                ((MainWindow)Application.Current.MainWindow).textBlock.Text = $"Error fetching data!\n{e.Message}";
                 ((MainWindow)Application.Current.MainWindow).processIndicator.Fill = new SolidColorBrush(Colors.Red);
-                ((MainWindow)Application.Current.MainWindow).textBlockTwo.Text = "Stopped";
+                ((MainWindow)Application.Current.MainWindow).textBlockTwo.Text = "Error";
             }
         }
 
