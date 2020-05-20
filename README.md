@@ -21,7 +21,7 @@
 
 ### How to use?
 
-First goto [releases page]() and download the latest release
+First goto [releases page](https://github.com/Shetty073/Ets2AtsCustomRichPresence/releases) and download the latest release. Unzip the zip to any location you want except Program Files folder  
 
 1. Start discord
 2. Start [ETS2/ATS Telemetry Web Server](https://github.com/Funbit/ets2-telemetry-server) (THIS STEP IS VERY IMPORTANT)
